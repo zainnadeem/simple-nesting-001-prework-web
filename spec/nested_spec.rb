@@ -21,9 +21,9 @@ describe "Nested Data Structures" do
       middle = tic_tac_toe_board[1][1]
 
       # Replace the __ with the correct accessors.
-      first_row = __
-      second_row = __
-      third_row = __
+      first_row = tic_tac_toe_board[0]
+      second_row = tic_tac_toe_board[1]
+      third_row = tic_tac_toe_board[2]
 
       expect(first_row).to eq(["A1", "A2", "A3"])
       expect(second_row).to eq(["B1", "B2", "B3"])
@@ -31,10 +31,10 @@ describe "Nested Data Structures" do
     end
 
     it 'can read second level of nesting' do
-      bottom_right_corner = __
-      top_left_corner = __
+      bottom_right_corner = tic_tac_toe_board[2][2]
+      top_left_corner = tic_tac_toe_board[0][0]
 
-      expect(bottom_middle).to eq("C2")
+      expect(bottom_right_corner).to eq("C3")
       expect(top_left_corner).to eq("A1")
     end
 
@@ -44,8 +44,9 @@ describe "Nested Data Structures" do
       # To place an X in the middle you would:
       tic_tac_toe_board[1][1] = "X" 
 
-      # Make your moves here
-
+      top_right = tic_tac_toe_board[0][2] = "X"
+      middle_right = tic_tac_toe_board[1][2] = "X"
+      bottom_right = tic_tac_toe_board[2][2] = "X"
 
       expect(top_right).to eq("X")
       expect(middle_right).to eq("X")
@@ -73,7 +74,8 @@ describe "Nested Data Structures" do
 
     it 'can access top level data' do
       # Replace the __ with the correct accessors
-      hopper = __ # What key in profile would you use to get Hopper's info?
+      hopper = {:grace_hopper => profiles[:grace_hopper]} # What key in profile would you use to get Hopper's info?
+
 
       expect(hopper).to eq({:grace_hopper => {
           :known_for => "COBOL",
@@ -82,13 +84,13 @@ describe "Nested Data Structures" do
     end
 
     it 'can access second level data' do
-      alan_kay_is_known_for = __ # What combination of keys would you use?
+      alan_kay_is_known_for = profiles[:alan_kay][:known_for] # What combination of keys would you use?
 
       expect(alan_kay_is_known_for).to eq("Object Orientation")
     end
 
     it 'can access data on the third level' do
-      dennis_ritchies_language = __
+      dennis_ritchies_language = profiles[:dennis_ritchie][:languages].first
 
       expect(dennis_ritchies_language).to eq("C")
     end
@@ -104,17 +106,26 @@ describe "Nested Data Structures" do
       # name.
       # You're going to want something like profiles =
 
+      profiles[:yukihiro_matsumoto] = {
+        :known_for => "Ruby",
+        :languages => "LISP, C"
+      }
+
       expect(profiles.keys).to include(:yukihiro_matsumoto)
     end
 
     it 'can write data to the second level' do
       # Change what alan kay is known for to "GUI"
 
+      profiles[:alan_kay][:known_for] = "GUI"
+
       expect(profiles[:alan_kay][:known_for]).to eq("GUI")
     end
 
     it 'can add data to the third level' do
       # Add Assembly to Dennis Ritchie's Languages
+
+      profiles[:dennis_ritchie][:languages] << "Assembly"
 
       expect(profiles[:dennis_ritchie][:languages]).to include("Assembly")
     end
