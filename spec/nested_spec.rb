@@ -40,18 +40,15 @@ describe "Nested Data Structures" do
 
     it 'can write to the second level of nesting' do
       # Replace the __ with the correct accessors.
-      top_right = __
-      middle_right = __
-      bottom_right = __
+      top_right = tic_tac_toe_board[0][2] = "X"
+      middle_right = tic_tac_toe_board[1][2] = "X"
+      bottom_right = tic_tac_toe_board[2][2] = "X"
       
       # Place "X"s in the positions corresponding to a win
       # on the right column.
       # To place an X in the middle you would:
       tic_tac_toe_board[1][1] = "X" 
 
-      top_right = tic_tac_toe_board[0][2] = "X"
-      middle_right = tic_tac_toe_board[1][2] = "X"
-      bottom_right = tic_tac_toe_board[2][2] = "X"
 
       expect(top_right).to eq("X")
       expect(middle_right).to eq("X")
