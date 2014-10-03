@@ -39,6 +39,11 @@ describe "Nested Data Structures" do
     end
 
     it 'can write to the second level of nesting' do
+      # Replace the __ with the correct accessors.
+      top_right = __
+      middle_right = __
+      bottom_right = __
+      
       # Place "X"s in the positions corresponding to a win
       # on the right column.
       # To place an X in the middle you would:
