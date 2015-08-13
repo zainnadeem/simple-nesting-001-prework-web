@@ -74,3 +74,5 @@ For this method we need to add a language to `:dennis_ritchie`. But we cannot sa
 programmer_hash[:dennis_ritchie][:languages] << "Assembly"
 programmer_hash
 ```
+
+All six of our tests are passing!
